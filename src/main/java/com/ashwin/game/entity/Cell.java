@@ -5,12 +5,12 @@ import com.ashwin.game.entity.command.CommandMap;
 import java.util.List;
 
 public class Cell {
-    private final Position position;
+    private final Coordinate coordinate;
     private Atom atom;
     private final List<Cell> surrounding;
 
-    public Cell(Position position, Atom atom, List<Cell> surrounding) {
-        this.position = position;
+    public Cell(Coordinate coordinate, Atom atom, List<Cell> surrounding) {
+        this.coordinate = coordinate;
         this.atom = atom;
         this.surrounding = surrounding;
     }
@@ -41,7 +41,7 @@ public class Cell {
         return liveCount;
     }
 
-    public boolean info(){
-        return hasLiveAtom();
+    public void gotoNextGen(){
+        this.atom.updateSelfToThisGen();
     }
 }

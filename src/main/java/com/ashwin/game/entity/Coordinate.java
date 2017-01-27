@@ -1,10 +1,10 @@
 package com.ashwin.game.entity;
 
-public class Position {
+public class Coordinate {
     public int x;
     public int y;
 
-    public Position(int x, int y) {
+    public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }

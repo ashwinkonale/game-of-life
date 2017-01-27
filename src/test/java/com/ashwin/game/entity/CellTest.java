@@ -16,15 +16,15 @@ public class CellTest {
 
     @Before
     public void setUp() throws Exception {
-        Position p00 = new Position(0, 0);
-        Position p01 = new Position(0, 1);
-        Position p02 = new Position(0, 2);
-        Position p10 = new Position(1, 0);
-        Position p11 = new Position(1, 1);
-        Position p12 = new Position(1, 2);
-        Position p20 = new Position(2, 3);
-        Position p21 = new Position(2, 3);
-        Position p22 = new Position(2, 3);
+        Coordinate p00 = new Coordinate(0, 0);
+        Coordinate p01 = new Coordinate(0, 1);
+        Coordinate p02 = new Coordinate(0, 2);
+        Coordinate p10 = new Coordinate(1, 0);
+        Coordinate p11 = new Coordinate(1, 1);
+        Coordinate p12 = new Coordinate(1, 2);
+        Coordinate p20 = new Coordinate(2, 3);
+        Coordinate p21 = new Coordinate(2, 3);
+        Coordinate p22 = new Coordinate(2, 3);
         List<Cell> surrounding = Arrays.asList(
                 new Cell(p00, null, new ArrayList<Cell>()),
                 new Cell(p01, null, new ArrayList<Cell>()),
@@ -41,6 +41,8 @@ public class CellTest {
 
     @Test
     public void testSpawnAtom() throws Exception {
+        cellWithNoLiveCells.spawnAtom();
+        assertTrue(cellWithNoLiveCells.hasLiveAtom());
     }
 
     @Test
@@ -55,8 +57,10 @@ public class CellTest {
         assertTrue(cellWithNoLiveCells.hasLiveAtom());
     }
 
-    public void testAct() throws Exception {
-
+    @Test
+    public void testShouldBeAbleToUpdateAtom() throws Exception {
+        cellWithNoLiveCells.gotoNextGen();
+        verify(atom).updateSelfToThisGen();
     }
 
 }
